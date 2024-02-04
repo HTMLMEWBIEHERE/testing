@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Nasreen Fatima Hussain</title>
+    <style>
+        body {
+            font-family: 'Pacifico', cursive;
+            background-color: #ff93a6; /* Light Pink */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #envelope {
+            position: relative;
+            width: 350px;
+            height: 250px;
+            background-color: #ffbddf; /* Lighter Pink */
+            border: 3px solid #ff385f; /* Pink */
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        #message {
+            display: none;
+            font-size: 20px;
+            color: #ff385f; /* Pink */
+        }
+
+        #envelope.open #message {
+            display: block;
+        }
+
+        #heart {
+            position: absolute;
+            color: #ff385f; /* Pink */
+            font-size: 40px;
+            bottom: -30px;
+        }
+
+        #options {
+            display: none;
+            margin-top: 20px;
+        }
+
+        button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ff385f; /* Pink */
+            color: #fff; /* White */
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="envelope" onclick="openEnvelope()">
+        <div id="message">Hello nasreen, will you be my valentine?</div>
+        <div id="heart">❤️</div>
+    </div>
+
+    <div id="options">
+        <button onclick="redirectToHearts()">Yes</button>
+        <button onclick="showNoMessage()">No</button>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            const envelope = document.getElementById('envelope');
+            const options = document.getElementById('options');
+            envelope.classList.add('open');
+            options.style.display = 'flex';
+        }
+
+        function redirectToHearts() {
+            window.location.href = 'hearts.html';
+        }
+
+        function showNoMessage() {
+            alert('Press yes please dont press no!!! u dumbie');
+        }
+    </script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Elements</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background-color: #ff93a6; /* Pink */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #floating-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .element {
+            position: absolute;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .heart, .flower, .cat {
+            color: #ff385f; /* Pink */
+            font-size: 50px;
+        }
+
+        .flower {
+            color: #ff93a6; /* Lighter Pink for Flowers */
+            font-size: 40px;
+        }
+
+        .cat {
+            font-size: 40px;
+        }
+
+        #love-message {
+            color: #fff; /* White */
+            font-size: 48px; /* Updated font size to 48px */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Pacifico', cursive; /* Change font to 'Pacifico' */
+        }
+    </style>
+
+    <!-- Link to 'Pacifico' font from Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+</head>
+<body>
+
+    <div id="floating-container"></div>
+    <div id="love-message">I love you nasreen! thank you for being my valentine!! i love you so so so muchy :) </div>
+
+    <script>
+        // Generate floating hearts, flowers, and cats
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingContainer = document.getElementById('floating-container');
+
+            function createFloatingElement(className, unicode) {
+                const element = document.createElement('div');
+                element.className = 'element ' + className;
+                element.innerHTML = unicode;
+                element.style.left = Math.random() * 100 + 'vw';
+                element.style.top = Math.random() * 100 + 'vh';
+                element.style.animationDuration = Math.random() * 2 + 1 + 's';
+                floatingContainer.appendChild(element);
+            }
+
+            for (let i = 0; i < 10; i++) {
+                createFloatingElement('heart', '&hearts;');
+                createFloatingElement('flower', '&#127799;');
+                createFloatingElement('cat', '&#128049;');
+            }
+        });
+    </script>
+
+</body>
+</html>
